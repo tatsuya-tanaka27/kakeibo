@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+  <link th:href="@{/css/kakeibo.css}" rel="stylesheet">
+  <script th:src="@{/js/kakeibo.js}"></script>
+  <title>input page</title>
+</head>
+<body>
+    <header class="topNavigation">
+        <div style="float:left;">
+          <div>ユーザー名</div>
+          <div th:text="${userName}" ></div>
+        </div>
+        <p>ナビゲーション</p>
+        <div class="cb"></div>
+      </header>
+    <div>
+        <h1 class="ts">家計簿入力</h1>
+    </div>
+    <div>
+        <table class="com_table">
+            <colgroup>
+                <col width="150px">
+                <col width="150px">
+                <col width="150px">
+                <col width="250px">
+            </colgroup>
+            <tr>
+                <th class="com_th">
+                    項目
+                </th>
+                <th class="com_th">
+                    金額
+                </th>
+                <th class="com_th">
+                    日付
+                </th>
+                <th class="com_th">
+                    備考
+                </th>
+            </tr>
+            <tr>
+                <td align="center" nowrap>
+                    <select name=”item”>
+                        <option value=”” selected></option>
+                        <option value=””>家賃</option>
+                        <option value=””>ガス代</option>
+                        <option value=””>水道代</option>
+                        <option value=””>電気代</option>
+                        <option value=””>食費</option>
+                        <option value=””>日用品代</option>
+                        <option value=””>雑費</option>
+                    </select>
+                </td>
+                <td align="center" nowrap>
+                    <input type="text" name="biko" value="12345">
+                </td>
+                <td align="center" nowrap>
+                    <input type="date"></input>
+                </td>
+                <td align="center" nowrap>
+                    <input type="text" name="biko" value="テスト値">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>

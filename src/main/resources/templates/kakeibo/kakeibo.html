@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+  <link th:href="@{/css/kakeibo.css}" rel="stylesheet">
+  <script th:src="@{/js/kakeibo.js}"></script>
+  <title>top page</title>
+</head>
+<body>
+<!--   <form action="kakeiboRecv" method="post"> -->
+<!--   <form name="kakeiboForm" id="kakeiboForm" action="#" data-th-action="@{/kakeibo}" data-th-object="${model}" method="post"> -->
+    <header class="topNavigation">
+      <div style="float:left;">
+        <div>ユーザー名</div>
+        <div th:text="${userName}" ></div>
+      </div>
+      <p>ナビゲーション</p>
+      <div class="cb"></div>
+    </header>
+    <div class="content">
+      <div>
+        <p class="top_title">愛の家計簿</p>
+        <img class="top_image" src="/images/shibainu.jpg">
+        <p class="top_message" th:text="${msg}" />
+        <div class="cb"></div>
+      </div>
+      <div style="margin:10px 0px 0px 300px;">
+        <div style="float:left;">
+          <form th:action="@{/kakeibo/input}" method="post">
+            <input type="hidden" name="input" id="input" th:value="${userName}">
+            <input class="btn-circle-kirby" type="submit" value="家計簿入力">
+          </form>
+        </div>
+        <div style="float:left;">
+          <form th:action="@{/kakeibo/registration}" method="post">
+            <input type="hidden" name="registration" id="registration" th:value="${userName}">
+            <input class="btn-circle-kirby" type="submit" value="家計簿項目作成">
+          </form>
+        </div>
+        <div style="float:left;">
+          <form th:action="@{/kakeibo/list}" method="post">
+            <input type="hidden" name="list" id="list" th:value="${userName}">
+            <input class="btn-circle-kirby" type="submit" value="家計簿一覧">
+          </form>
+        </div>
+        <div style="float:left;">
+          <a href="" class="btn-circle-kirby">設定</a>
+        </div>
+        <div class="cb"></div>
+      </div>
+      <div class="cb"></div>
+    </div>
+<!--   </form> -->
+</body>
+</html>

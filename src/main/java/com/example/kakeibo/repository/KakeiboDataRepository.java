@@ -1,0 +1,52 @@
+package com.example.kakeibo.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.example.kakeibo.entity.KakeiboData;
+
+
+// This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
+// CRUD refers Create, Read, Update, Delete
+/**
+ * 家計簿データ情報取得用のリポジトリクラス
+ * @author nanak
+ *
+ */
+@Repository
+public class KakeiboDataRepository {
+
+	@Autowired
+	private final JdbcTemplate jdbcTemplate;
+
+	/**
+	 * @param jdbcTemplate
+	 */
+	@Autowired
+	public KakeiboDataRepository(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	/**
+	 * ユーザー情報取得
+	 * @return data
+	 */
+	public List<KakeiboData> getUser() {
+		String sql = "select * from kakeibo_data where id='";
+		sql = sql + "id'";
+		List<Map<String, Object>>dataList = jdbcTemplate.queryForList(sql);
+		List<KakeiboData> list = new ArrayList<>();
+		KakeiboData data = new KakeiboData();
+		for(Map<String,Object> kakeiboData : dataList) {
+			data.setId((String)kakeiboData.get("id"));
+			list.add(data);
+		}
+		return list;
+	}
+
+}

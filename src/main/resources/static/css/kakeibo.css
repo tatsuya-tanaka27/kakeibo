@@ -1,0 +1,125 @@
+/* 共通スタイル */
+
+/*テーブル内の枠線 実線 1px 黒*/
+table th, table td {
+  border: solid 1px black;
+}
+
+.cb{
+  /* floatを解除 */
+  clear: both;
+}
+
+.ts{
+  text-align: center;
+}
+
+.tr{
+  text-align: right;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.topNavigation{
+    height: 70px;
+    text-align: center;
+    background-color: #888;
+    color: #fff;
+}
+.content{
+    flex: 1;
+    background-color: #eee;
+    text-align: center;
+    margin-top: 10px;
+}
+
+a.btn--blue.btn--border-double {
+  border: 8px double #0090bb;
+}
+
+.btn-circle-kirby {
+  display: inline-block;
+  text-decoration: none;
+  color: #f9a9ae;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  background-image: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.btn-circle-kirby:active {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.32);
+  background-image: linear-gradient(#fed6e3 0%, #ffcfcf 100%);
+}
+
+.com_title {
+	margin:0px 0px 0px 0px;
+	font-size:70px;
+	text-align:center;
+	line-height:1.95em;
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient( 90deg, #2196F3 0 0.1em, #90CAF9 0.1em 0.2em );
+	-webkit-background-clip: text;
+}
+
+.com_table {
+	border: solid 1px;
+	width:800px;
+	cellspacing:0;
+	cellpadding:5;
+	bordercolor:black;
+	margin-left:200px;
+}
+
+.com_th {
+	background-color:lightpink;
+}
+
+/* トップ画面用スタイル */
+
+.top_title {
+	margin:0px 0px 0px 0px;
+	font-size:70px;
+	text-align:center;
+	line-height:1.95em;
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient( 90deg, #2196F3 0 0.1em, #90CAF9 0.1em 0.2em );
+	-webkit-background-clip: text;
+}
+
+.top_image {
+	width:150px;
+	height:150px;
+	float:left;
+	margin:0px 0px 0px 200px;
+	display: inline-block;
+}
+.top_message {
+	margin:-50px 0px 0px -110px;
+	display: inline-block;
+}
+
+
+
+/* 入力画面用スタイル */
+
+.input_item {
+	width:145px;
+}
+
+.input_biko {
+	width:230px;
+}
+
+
