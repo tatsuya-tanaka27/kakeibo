@@ -7,11 +7,12 @@
 
     <!--ローカル環境用設定 -->
     <springProfile name="default">
-        <property name="logFilePath" value="./" />
+        <property name="logFilePath" value="C:/log/kakeibo/" />
         <!--log4jdbc-log4j2 -->
-        <logger name="jdbc.sqltiming" level="INFO" />
-        <logger name="jdbc.resultsettable" level="INFO" />
-        <logger name="jdbc.connection" level="WARN" />
+        <logger name="jdbc" level="OFF" />
+    	<logger name="jdbc.sqlonly" level="DEBUG" />
+    	<logger name="jdbc.resultset" level="OFF" />
+    	<logger name="jdbc.audit" level="OFF" />
     </springProfile>
 
     <!--develop環境用設定 -->
@@ -48,7 +49,7 @@
     </appender>
 
     <!--rootログレベルと使用出力ルール -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="APPLIATION_LOG" />
     </root>
 </configuration>
