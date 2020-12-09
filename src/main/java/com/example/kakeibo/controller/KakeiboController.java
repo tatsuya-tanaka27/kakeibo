@@ -3,6 +3,8 @@ package com.example.kakeibo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +33,10 @@ public class KakeiboController {
 	@Autowired
 	private KakeiboDataRepository kakeiboDataRepository;
 
+//	@SuppressWarnings("unused")
+//	@Autowired
+//	private KakeiboFormBean kakeiboFormBean;
+
 	@ModelAttribute
 	KakeiboFormBean setUpForm() {
 		return new KakeiboFormBean();
@@ -42,7 +48,7 @@ public class KakeiboController {
 	 */
 //	@RequestMapping(value = "", method = RequestMethod.GET)
 	@RequestMapping("kakeibo")
-	public String index(Model model) {
+	public String index(@ModelAttribute("kakeiboFormBean") @Validated KakeiboFormBean kakeiboFormBean, Model model) {
 		model.addAttribute("msg", "ここでは家計簿を作成や編集、登録することができるワン！");
 
 		// 空のフォームオブジェクトをModelに設定
@@ -50,8 +56,9 @@ public class KakeiboController {
 		// 遷移先を返す(この場合はkakeibo.htmlが遷移先となる)
 
 		try {
-//			KakeiboFormBean kakeiboFormBean.setKakeiboUser(kakeiboUserRepository.getUser());
-//			model.addAttribute("userName", user.getName());
+			kakeiboFormBean.setKakeiboUser(kakeiboUserRepository.getUser());
+			model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
+			model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,20 +67,26 @@ public class KakeiboController {
 	}
 
 	@RequestMapping(value = "input", method = RequestMethod.POST)
-	public String input(@RequestParam("input") String input, Model model) {
+	public String input(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result, @RequestParam("input") String input, Model model) {
 		model.addAttribute("input", input);
+		model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
+		model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 		return "kakeibo/input";
 	}
 
 	@RequestMapping(value = "registration", method = RequestMethod.POST)
-	public String registration(@RequestParam("registration") String registration, Model model) {
+	public String registration(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result, @RequestParam("registration") String registration, Model model) {
 		model.addAttribute("registration", registration);
+		model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
+		model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 		return "kakeibo/registration";
 	}
 
 	@RequestMapping(value = "list", method = RequestMethod.POST)
-	public String list(@RequestParam("list") String list, Model model) {
+	public String list(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result, @RequestParam("list") String list, Model model) {
 		model.addAttribute("list", list);
+		model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
+		model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 		return "kakeibo/list";
 	}
 
