@@ -33,12 +33,13 @@ public class KakeiboDataRepository {
 	}
 
 	/**
-	 * ユーザー情報取得
+	 * 家計簿データ情報取得
+	 * @param id
 	 * @return data
 	 */
-	public List<KakeiboData> getUser() {
+	public List<KakeiboData> getDataList(String id) {
 		String sql = "select * from kakeibo_data where id='";
-		sql = sql + "id'";
+		sql = sql + id + "'";
 		List<Map<String, Object>>dataList = jdbcTemplate.queryForList(sql);
 		List<KakeiboData> list = new ArrayList<>();
 		KakeiboData data = new KakeiboData();
