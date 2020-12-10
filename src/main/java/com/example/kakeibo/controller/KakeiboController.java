@@ -42,7 +42,7 @@ public class KakeiboController {
 		return new KakeiboFormBean();
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping("login")
 	public String login(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
 			@RequestParam("login") String login, Model model) {
 
@@ -70,8 +70,9 @@ public class KakeiboController {
 
 			// ユーザー情報取得
 			kakeiboFormBean.setKakeiboUser(topService.getUser());
-			model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
-			model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
+			model.addAttribute("kakeiboUser", kakeiboFormBean.getKakeiboUser());
+//			model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
+//			model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 
 			// 家計簿データ取得
 			kakeiboFormBean

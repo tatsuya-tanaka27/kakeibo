@@ -14,7 +14,7 @@
     <header class="topNavigation">
       <div style="float:left;">
         <div>ユーザー名</div>
-        <div th:text="${userName}" ></div>
+        <div th:text="${kakeiboUser.name}" ></div>
       </div>
       <p>ナビゲーション</p>
       <div class="cb"></div>
@@ -29,19 +29,19 @@
       <div style="margin:10px 0px 0px 300px;">
         <div style="float:left;">
           <form th:action="@{/kakeibo/input}" method="post">
-            <input type="hidden" name="input" id="input" th:value="${userName}">
+            <input type="hidden" name="input" id="input" th:value="${kakeiboUser.name}">
             <input class="btn-circle-kirby" type="submit" value="家計簿入力">
           </form>
         </div>
         <div style="float:left;">
           <form th:action="@{/kakeibo/registration}" method="post">
-            <input type="hidden" name="registration" id="registration" th:value="${userName}">
+            <input type="hidden" name="registration" id="registration" th:value="${kakeiboUser.name}">
             <input class="btn-circle-kirby" type="submit" value="家計簿項目作成">
           </form>
         </div>
         <div style="float:left;">
           <form th:action="@{/kakeibo/list}" method="post">
-            <input type="hidden" name="list" id="list" th:value="${userName}">
+            <input type="hidden" name="list" id="list" th:value="${kakeiboUser.name}">
             <input class="btn-circle-kirby" type="submit" value="家計簿一覧">
           </form>
         </div>
