@@ -1,5 +1,7 @@
 package com.example.kakeibo.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +45,7 @@ public class KakeiboController {
 	}
 
 	@RequestMapping("login")
-	public String login(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
-			@RequestParam("login") String login, Model model) {
+	public String login(Model model) {
 
 		return "kakeibo/login";
 	}
@@ -55,9 +56,9 @@ public class KakeiboController {
 	 * @param model
 	 * @return 家計簿データ
 	 */
-//	@RequestMapping(value = "index", method = RequestMethod.POST)
-	@RequestMapping("index")
-	public String index(@ModelAttribute("kakeiboFormBean") @Validated KakeiboFormBean kakeiboFormBean, Model model) {
+	@RequestMapping(value = "index", method = RequestMethod.POST)
+	public String index(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
+			@RequestParam Map<String, String> params, Model model) {
 		model.addAttribute("msg", "ここでは家計簿を作成や編集、登録することができるワン！");
 
 		logger.info("家計簿トップ画面");

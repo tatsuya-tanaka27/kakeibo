@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+  <link th:href="@{/css/kakeibo.css}" rel="stylesheet">
+  <script th:src="@{/js/kakeibo.js}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>login page</title>
+</head>
+
+<body>
+  <div class="login_main">
+    <p class="login_sign" align="center">Sign in</p>
+    <form th:action="@{/kakeibo/index}" method="post">
+      <input class="login_un " type="text" align="center" placeholder="UserId" name="userId">
+      <input class="login_pass" type="password" align="center" placeholder="Password" name="password">
+      <input class="login_submit" align="center" type="submit" value="Sign in">
+      <p class="login_forgot" align="center"><a href="index.html">Forgot Password?</p>
+    </form>
+  </div>
+</body>
+
+</html>
