@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.kakeibo.bean.KakeiboFormBean;
-import com.example.kakeibo.repository.KakeiboDataRepository;
-import com.example.kakeibo.repository.KakeiboUserRepository;
+import com.example.kakeibo.service.TopService;
 
 /**
  * 家計簿コントローラークラス
@@ -32,11 +31,7 @@ public class KakeiboController {
 
 	@SuppressWarnings("unused")
 	@Autowired
-	private KakeiboUserRepository kakeiboUserRepository;
-
-	@SuppressWarnings("unused")
-	@Autowired
-	private KakeiboDataRepository kakeiboDataRepository;
+	private TopService topService;
 
 	//	@SuppressWarnings("unused")
 	//	@Autowired
@@ -47,36 +42,58 @@ public class KakeiboController {
 		return new KakeiboFormBean();
 	}
 
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public String login(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
+			@RequestParam("login") String login, Model model) {
+
+		return "kakeibo/login";
+	}
+
 	/**
+	 * 家計簿トップ画面
+	 * @param kakeiboFormBean
 	 * @param model
 	 * @return 家計簿データ
 	 */
-	//	@RequestMapping(value = "", method = RequestMethod.GET)
-	@RequestMapping("kakeibo")
+//	@RequestMapping(value = "index", method = RequestMethod.POST)
+	@RequestMapping("index")
 	public String index(@ModelAttribute("kakeiboFormBean") @Validated KakeiboFormBean kakeiboFormBean, Model model) {
 		model.addAttribute("msg", "ここでは家計簿を作成や編集、登録することができるワン！");
 
-
-		logger.info("テストログ");
+		logger.info("家計簿トップ画面");
 
 		// 空のフォームオブジェクトをModelに設定
 		//		model.addAttribute("KakeiboForm", new KakeiboForm());
 		// 遷移先を返す(この場合はkakeibo.htmlが遷移先となる)
 
 		try {
-			kakeiboFormBean.setKakeiboUser(kakeiboUserRepository.getUser());
+
+			// ユーザー情報取得
+			kakeiboFormBean.setKakeiboUser(topService.getUser());
 			model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
 			model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
 
+			// 家計簿データ取得
 			kakeiboFormBean
-					.setKakeiboDataList(kakeiboDataRepository.getDataList(kakeiboFormBean.getKakeiboUser().getId()));
+					.setKakeiboDataList(topService.getDataList(kakeiboFormBean.getKakeiboUser().getId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return "kakeibo/kakeibo";
+		logger.info("家計簿ユーザー情報「ユーザー名：" + kakeiboFormBean.getKakeiboUser().getName()
+				+ "　ID：" + kakeiboFormBean.getKakeiboUser().getId());
+
+		return "kakeibo/index";
 	}
 
+	/**
+	 * 家計簿入力画面
+	 * @param kakeiboFormBean
+	 * @param result
+	 * @param input
+	 * @param model
+	 * @return 家計簿データ
+	 */
 	@RequestMapping(value = "input", method = RequestMethod.POST)
 	public String input(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
 			@RequestParam("input") String input, Model model) {
@@ -86,6 +103,14 @@ public class KakeiboController {
 		return "kakeibo/input";
 	}
 
+	/**
+	 * 家計簿項目登録画面
+	 * @param kakeiboFormBean
+	 * @param result
+	 * @param registration
+	 * @param model
+	 * @return 家計簿データ
+	 */
 	@RequestMapping(value = "registration", method = RequestMethod.POST)
 	public String registration(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
 			@RequestParam("registration") String registration, Model model) {
@@ -95,6 +120,14 @@ public class KakeiboController {
 		return "kakeibo/registration";
 	}
 
+	/**
+	 * 家計簿一覧画面
+	 * @param kakeiboFormBean
+	 * @param result
+	 * @param list
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "list", method = RequestMethod.POST)
 	public String list(@Validated KakeiboFormBean kakeiboFormBean, BindingResult result,
 			@RequestParam("list") String list, Model model) {
