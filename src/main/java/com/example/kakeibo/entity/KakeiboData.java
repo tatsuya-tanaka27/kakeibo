@@ -30,7 +30,7 @@ public class KakeiboData {
 
 	@Column(name = "item")
 	/** 項目 */
-	private char item;
+	private String item;
 
 	@Column(name = "amount")
 	/** 金額 */
@@ -38,7 +38,7 @@ public class KakeiboData {
 
 	@Column(name = "inputDate")
 	/** 入力日付 */
-	private int inputDate;
+	private Date inputDate;
 
 	@Column(name = "biko")
 	/** 備考 */
@@ -93,7 +93,7 @@ public class KakeiboData {
 	 * 項目を取得
 	 * @return item
 	 */
-	public char getItem() {
+	public String getItem() {
 		return item;
 	}
 
@@ -101,7 +101,7 @@ public class KakeiboData {
 	 * 項目を設定
 	 * @param item
 	 */
-	public void setItem(char item) {
+	public void setItem(String item) {
 		this.item = item;
 	}
 
@@ -125,7 +125,7 @@ public class KakeiboData {
 	 * 入力日付を取得
 	 * @return inputDate
 	 */
-	public int getInputDate() {
+	public Date getInputDate() {
 		return inputDate;
 	}
 
@@ -133,7 +133,7 @@ public class KakeiboData {
 	 * 入力日付を設定
 	 * @param inputDate
 	 */
-	public void setInputDatet(int inputDate) {
+	public void setInputDate(Date inputDate) {
 		this.inputDate = inputDate;
 	}
 

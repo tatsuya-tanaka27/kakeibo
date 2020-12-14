@@ -78,6 +78,7 @@ public class KakeiboController {
 			// 家計簿データ取得
 			kakeiboFormBean
 					.setKakeiboDataList(topService.getDataList(kakeiboFormBean.getKakeiboUser().getId()));
+			model.addAttribute("kakeiboDataList", kakeiboFormBean.getKakeiboDataList());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -136,6 +137,7 @@ public class KakeiboController {
 		model.addAttribute("list", list);
 		model.addAttribute("userName", kakeiboFormBean.getKakeiboUser().getName());
 		model.addAttribute("userId", kakeiboFormBean.getKakeiboUser().getId());
+		model.addAttribute("kakeiboDataList", kakeiboFormBean.getKakeiboDataList());
 		return "kakeibo/list";
 	}
 
