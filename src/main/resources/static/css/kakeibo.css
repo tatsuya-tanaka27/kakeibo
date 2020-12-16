@@ -1,8 +1,18 @@
 /* 共通スタイル */
 
+
 /*テーブル内の枠線 実線 1px 黒*/
 table th, table td {
   border: solid 1px black;
+}
+
+
+section{
+
+}
+
+.ma {
+  margin: auto
 }
 
 .cb{
@@ -78,13 +88,17 @@ a.btn--blue.btn--border-double {
 	cellspacing:0;
 	cellpadding:5;
 	bordercolor:black;
-	margin-left:200px;
 }
 
 .com_th {
 	background-color:lightpink;
 }
 
+.com_border {
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 2px solid #333333;
+}
 
 /* ログイン画面用スタイル */
 
