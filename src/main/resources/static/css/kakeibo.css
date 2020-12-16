@@ -24,9 +24,6 @@ section{
   text-align: center;
 }
 
-.tr{
-  text-align: right;
-}
 
 body{
     min-height: 100vh;
@@ -201,7 +198,7 @@ a.btn--blue.btn--border-double {
         .main {
             border-radius: 0px;
         }
-        
+    }
         
 /* トップ画面用スタイル */
 
@@ -238,6 +235,11 @@ a.btn--blue.btn--border-double {
 
 .input_biko {
 	width:230px;
+}
+
+.input_amount {
+	text-align: right;
+	width:100px;
 }
 
 
