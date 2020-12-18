@@ -28,9 +28,9 @@ public class KakeiboData {
 	/** id */
 	private String id;
 
-	@Column(name = "item")
+	@Column(name = "itemId")
 	/** 項目 */
-	private String item;
+	private String itemId;
 
 	@Column(name = "amount")
 	/** 金額 */
@@ -91,18 +91,18 @@ public class KakeiboData {
 
 	/**
 	 * 項目を取得
-	 * @return item
+	 * @return itemId
 	 */
-	public String getItem() {
-		return item;
+	public String getItemId() {
+		return itemId;
 	}
 
 	/**
 	 * 項目を設定
-	 * @param item
+	 * @param itemId
 	 */
-	public void setItem(String item) {
-		this.item = item;
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
 	/**

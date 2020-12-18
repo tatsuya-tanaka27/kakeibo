@@ -57,7 +57,7 @@
             </tr>
             <!-- th:eachでfruitsの要素分ループをまわす -->
             <tr th:each="data : ${kakeiboDataList}">
-                <td th:text="${data.item}"></td>
+                <td th:text="${data.itemId}"></td>
                 <td th:text="${data.amount}"></td>
                 <td th:text="${data.inputDate}"></td>
                 <td th:text="${data.biko}"></td>

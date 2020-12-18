@@ -45,7 +45,7 @@ public class KakeiboDataRepository {
 		for (Map<String, Object> kakeiboData : dataList) {
 			KakeiboData data = new KakeiboData();
 			data.setId((String) kakeiboData.get("id"));
-			data.setItem((String) kakeiboData.get("item"));
+			data.setItemId((String) kakeiboData.get("itemId"));
 			data.setAmount((int) kakeiboData.get("amount"));
 			data.setInputDate((Date) kakeiboData.get("inputDate"));
 			data.setBiko((String) kakeiboData.get("biko"));
