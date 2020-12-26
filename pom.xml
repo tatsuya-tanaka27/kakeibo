@@ -18,7 +18,7 @@
 		<java.version>15</java.version>
 	</properties>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
@@ -91,7 +91,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-            		<mainClass>com.example.app.Main</mainClass>
+            		<mainClass>com.example.kakeibo.KakeiboApplication</mainClass>
         		</configuration>
 			</plugin>
 		</plugins>
